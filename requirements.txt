@@ -1,0 +1,13 @@
+# python 3.10.0 only
+
+django==4.2.11
+
+djangorestframework==3.14.0
+markdown==3.5.1
+django-filter==23.5
+
+python-dotenv==1.0.0
+django-cors-headers==4.3.1
+drf-spectacular==0.26.2
+
+# psycopg2-binary==2.9.6
