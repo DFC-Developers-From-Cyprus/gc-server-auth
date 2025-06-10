@@ -1,21 +1,26 @@
 from django.urls import path
 
-from .viewsets import ViewSet
+from .viewsets import VolunteerViewSet, OrganizationViewSet, AuthViewSet
 
 urlpatterns = [
     path(
-        "/",
-        ViewSet.as_view({"post": "create"}),
-        name="create",
+        "volunteer/register/",
+        VolunteerViewSet.as_view({"post": "create"}),
+        name="volunteer-register",
     ),
     path(
-        "/",
-        ViewSet.as_view({"get": "retrieve"}),
-        name="detail",
+        "organization/register/",
+        OrganizationViewSet.as_view({"post": "create"}),
+        name="organization-register",
     ),
     path(
-        "/",
-        ViewSet.as_view({"get": "list"}),
-        name="list",
+        "auth/login/",
+        AuthViewSet.as_view({"post": "login"}),
+        name="login",
+    ),
+    path(
+        "auth/logout/",
+        AuthViewSet.as_view({"post": "logout"}),
+        name="logout",
     ),
 ]
