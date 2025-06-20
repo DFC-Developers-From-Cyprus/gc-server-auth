@@ -183,3 +183,7 @@ SPECTACULAR_SETTINGS = {
     "PARSER_WHITELIST": ["rest_framework.parsers.JSONParser"],
     "RENDERER_WHITELIST": ["rest_framework.renderers.JSONRenderer"],
 }
+
+# The line `AUTH_USER_MODEL` in Django settings is used to specify a custom
+# user model for authentication in the Django project.
+AUTH_USER_MODEL = "accounts.CustomUser"
