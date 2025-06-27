@@ -1,5 +1,7 @@
 import uuid
 
+from django.views.decorators.csrf import csrf_protect
+from django.utils.decorators import method_decorator
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 
@@ -11,6 +13,7 @@ from .models import CustomUser
 from .serializers import LoginSerializer, RegistrationSerializer
 
 
+@method_decorator(csrf_protect, name="create")
 class LoginViewSet(viewsets.ViewSet):
     queryset = CustomUser.objects.all()
     serializer_class = LoginSerializer
@@ -51,6 +54,7 @@ class LoginViewSet(viewsets.ViewSet):
         )
 
 
+@method_decorator(csrf_protect, name="create")
 class RegistrationViewSet(viewsets.ModelViewSet):
     queryset = CustomUser.objects.all()
     serializer_class = RegistrationSerializer
