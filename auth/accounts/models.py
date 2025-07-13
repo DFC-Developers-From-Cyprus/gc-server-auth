@@ -4,6 +4,27 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 
+class Subscribe(models.Model):
+    uuid = models.UUIDField(
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False,
+    )
+    user_uuid = models.UUIDField(
+        verbose_name="User UUID",
+        null=False,
+        blank=False,
+    )
+    org_uuid = models.UUIDField(
+        verbose_name="Organization UUID",
+        null=False,
+        blank=False,
+    )
+
+    def __str__(self):
+        return f"User {self.user_uuid} subscribed at organization {self.org_uuid}"
+
+
 class CustomUser(AbstractUser):
     uuid = models.UUIDField(
         primary_key=True,

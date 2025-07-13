@@ -25,23 +25,23 @@ from drf_spectacular.views import (
 )
 
 urlpatterns = [
-    path("", include("accounts.urls")),
+    path("api/auth/", include("accounts.urls")),
     path(
-        "A3Dm_iN-P3An6L/",
+        "auth/a3m7n-p8n3l/",
         admin.site.urls,
     ),  # TODO Remove on deploy!
     path(
-        "api/schema/",
+        "api/auth/schema/",
         SpectacularAPIView.as_view(),
         name="schema",
     ),  # TODO Remove on deploy!
     path(
-        "api/schema/swagger-ui/",
+        "api/auth/schema/swagger-ui/",
         SpectacularSwaggerView.as_view(url_name="schema"),
         name="swagger-ui",
     ),  # TODO Remove on deploy!
     path(
-        "api/schema/redoc/",
+        "api/auth/schema/redoc/",
         SpectacularRedocView.as_view(url_name="schema"),
         name="redoc",
     ),  # TODO Remove on deploy!
