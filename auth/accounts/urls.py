@@ -9,33 +9,33 @@ from .viewsets import (
 )
 
 urlpatterns = [
-    # path(
-    #     "profile/<uuid:uuid>/",
-    #     ProfileViewSet.as_view({"put": "update"}),
-    #     name="profile-update",
-    # ),
     path(
-        "profile/<uuid:uuid>/",
+        "profile-update/<uuid:uuid>/",
+        ProfileViewSet.as_view({"put": "update"}),
+        name="profile-update",
+    ),
+    path(
+        "profile-detail/<uuid:uuid>/",
         ProfileViewSet.as_view({"get": "retrieve"}),
         name="profile-detail",
     ),
     path(
-        "subscribe/",
+        "subscribe-user-organization/",
         SubscribeViewSet.as_view({"post": "create"}),
         name="subscribe-user-org",
     ),
     path(
-        "subscribe/<uuid:uuid>/",
+        "subscribe-user-organization-detail/<uuid:uuid>/",
         SubscribeViewSet.as_view({"get": "retrieve"}),
         name="subscribe-user-org-detail",
     ),
     path(
-        "org/<uuid:uuid>/",
+        "organization-detail/<uuid:uuid>/",
         OrganizationViewSet.as_view({"get": "retrieve"}),
         name="org-detail",
     ),
     path(
-        "orgs/",
+        "organizations/",
         OrganizationViewSet.as_view({"get": "list"}),
         name="org-list",
     ),

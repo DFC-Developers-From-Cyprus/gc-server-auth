@@ -5,7 +5,7 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 
-# from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404
 
 from rest_framework import viewsets, status
 from rest_framework.response import Response
@@ -28,14 +28,14 @@ class ProfileViewSet(viewsets.ViewSet):
     queryset = CustomUser.objects.all()
     serializer_class = ProfileSerializer
 
-    # def update(self, request, *args, **kwargs):
-    #     user_uuid = kwargs.get("uuid")
-    #     user = get_object_or_404(CustomUser, uuid=user_uuid)
-    #     serializer = self.serializer_class(user, data=request.data)
-    #     if serializer.is_valid():
-    #         serializer.save()
-    #         return Response(serializer.data)
-    #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    def update(self, request, *args, **kwargs):
+        user_uuid = kwargs.get("uuid")
+        user = get_object_or_404(CustomUser, uuid=user_uuid)
+        serializer = self.serializer_class(user, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     @method_decorator(csrf_protect, name="retrieve")
     def retrieve(self, request, *args, **kwargs):
