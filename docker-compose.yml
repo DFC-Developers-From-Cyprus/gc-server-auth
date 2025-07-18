@@ -18,7 +18,7 @@ services:
     volumes:
       - ./auth:/app
     ports:
-      - "3000:8000"
+      - "127.0.0.1:3000:8000"
     environment:
       - DJANGO_SETTINGS_MODULE=auth.settings
     env_file:
